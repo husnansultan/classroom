@@ -1,10 +1,10 @@
 package com.qa.persist.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,22 +17,26 @@ public class Classroom {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private Long id;
-	
-	private Long classroom_ID;
+	Long classroom_ID;
 	private String trainer;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(
+	        mappedBy = "post",
+	        cascade = CascadeType.ALL,
+	        orphanRemoval = true,
+	        fetch = FetchType.EAGER
+	    )
 	@JoinColumn(name = "trainee_ID")
-	private List<Trainee> trainees = new ArrayList<>();
+	private List<Trainee> trainee_ID;
 
 	public Classroom() {
 
 	}
 
-	public Classroom(Long classroom_ID, String trainer, List<Trainee> trainees ) {
-		this.setClassroomID(classroom_ID);
-		this.setTrainer(trainer);
-		this.setTrainees(trainees);
+	public Classroom(Long classroom_ID, String trainer, List<Trainee> trainee_ID) {
+		this.classroom_ID = classroom_ID;
+		this.trainer = trainer;
+		this.trainee_ID = trainee_ID;
 	}
 
 	@Override
@@ -40,12 +44,12 @@ public class Classroom {
 		return null;
 	}
 
-	public Long getClassroomID() {
-		return classroom_ID;
+	public Long getClassroom_ID() {
+		return id;
 	}
 
-	public void setClassroomID(Long classroomID) {
-		this.classroom_ID = classroomID;
+	public void setClassroom_ID(Long classroom_ID) {
+		this.id = classroom_ID;
 	}
 
 	public String getTrainer() {
@@ -56,12 +60,12 @@ public class Classroom {
 		this.trainer = trainer;
 	}
 
-	public List<Trainee> getTrainees() {
-		return trainees;
+	public List<Trainee> getTrainee_ID() {
+		return trainee_ID;
 	}
 
-	public void setTrainees(List<Trainee> trainees) {
-		this.trainees = trainees;
+	public void setTrainee_ID(List<Trainee> trainee_ID) {
+		this.trainee_ID = trainee_ID;
 	}
 
 }

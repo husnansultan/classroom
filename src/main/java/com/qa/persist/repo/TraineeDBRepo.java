@@ -27,7 +27,6 @@ public class TraineeDBRepo implements TraineeRepo {
 	@Transactional(REQUIRED)
 	public String getTrainee() {
 		Query query = manager.createQuery("Select a FROM Account a");
-		@SuppressWarnings("unchecked")
 		Collection<Trainee> trainees = (Collection<Trainee>) query.getResultList();
 		return util.getJSONForObject(trainees);
 	}

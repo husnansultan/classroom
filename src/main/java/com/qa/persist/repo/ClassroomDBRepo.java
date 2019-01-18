@@ -27,7 +27,6 @@ public class ClassroomDBRepo implements ClassroomRepo {
 	@Transactional(REQUIRED)
 	public String getClassroom() {
 		Query query = manager.createQuery("Select a FROM Account a");
-		@SuppressWarnings("unchecked")
 		Collection<Classroom> classrooms = (Collection<Classroom>) query.getResultList();
 		return util.getJSONForObject(classrooms);
 	}
