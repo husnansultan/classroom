@@ -1,9 +1,9 @@
-package com.qa.persist.repo;
+package com.qa.biz.serv;
 
-public interface TraineeRepo {
-	
+public interface TraineeServ {
+
 	String getTrainee();
-	
+
 	String createTrainee(String traineeJSON);
 
 	String updateTrainee(Long id, String traineeJSON);

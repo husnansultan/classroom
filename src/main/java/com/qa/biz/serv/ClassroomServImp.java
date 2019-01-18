@@ -3,16 +3,16 @@ package com.qa.biz.serv;
 import javax.inject.Inject;
 
 import com.qa.biz.serv.ClassroomServ;
-import com.qa.persist.domain.Classroom;
+//import com.qa.persist.domain.Classroom;
 import com.qa.persist.repo.ClassroomRepo;
-import com.qa.util.JSONUtil;
 
 public class ClassroomServImp implements ClassroomServ {
 
 	@Inject
 	private ClassroomRepo repo;
-	@Inject
-	private JSONUtil util;
+
+	// @Inject
+	// private JSONUtil util;
 
 	@Override
 	public String getClassroom() {
@@ -21,19 +21,17 @@ public class ClassroomServImp implements ClassroomServ {
 
 	@Override
 	public String createClassroom(String classroomJSON) {
-		return null;
+		return repo.createClassroom(classroomJSON);
 	}
 
 	@Override
 	public String updateClassroom(Long id, String classroomJSON) {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.updateClassroom(id, classroomJSON);
 	}
 
 	@Override
 	public String deleteClassroom(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.deleteClassroom(id);
 	}
 
 }

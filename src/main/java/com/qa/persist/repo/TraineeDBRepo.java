@@ -63,7 +63,7 @@ public class TraineeDBRepo implements TraineeRepo {
 	private Trainee findTrainee(Long id) {
 		return manager.find(Trainee.class, id);
 	}
-	
+
 	public void setManager(EntityManager manager) {
 		this.manager = manager;
 	}
